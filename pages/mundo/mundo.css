@@ -1,5 +1,6 @@
 body {
   font-family: "Baloo Thambi 2", cursive;
+  background-color: #0e0240;
 }
 
 #chartdiv {
@@ -8,11 +9,32 @@ body {
   background-color: #212327;
 }
 
-#latest-section {
+#home-section {
   background-color: #0e0240;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: #ff3366;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  color: #ffffff;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+#scrollable {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+thead {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+}

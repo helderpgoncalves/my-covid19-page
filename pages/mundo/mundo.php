@@ -10,7 +10,7 @@ include 'logic.php';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Covid-19 by IPVC</title>
+  <title>COVID-19 IPVC</title>
 
 
   <!-- Bootstrap CSS -->
@@ -58,85 +58,126 @@ include 'logic.php';
           <a class="nav-link" aria-disabled="true">Mundo 🌎<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pages/portugal.html">Portugal 🇵🇹</a>
+          <a class="nav-link" href="/my-covid19-page/pages/portugal/portugal.php">Portugal 🇵🇹</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Noticias 📰
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="index.php">Mundo</a>
-            <a class="dropdown-item" href="#">Portugal</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">IPVC</a>
-          </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="nav-link" href="https://github.com/helderpgoncalves/my-covid19-page" style="text-decoration:none;"><i class="fa fa-github" aria-hidden="true"></i> Github Project</a></li>
+      </ul>
     </div>
   </nav>
 
-  <section id="world-section">
-    <!-- MAPA DO COVID -->
-    <div id="chartdiv"></div>
-
-    <!-- TABELA DO COVID -->
-    <div class="container my-5">
-      <div class="row text-center">
-        <div class="col-4 text-warning">
-          <h5>Confirmados</h5>
-          <?php echo $total_confirmed; ?>
+  <section id="home-section">
+    <div class="container">
+      <center>
+        <h1>Where the data come from?<h1>
+            <h3><a href="https://github.com/CSSEGISandData/COVID-19" style="text-decoration:none; color:white">CSSEGISandData/COVID-19</a></h3>
+      </center>
+      <div class="row">
+        <div class="col-sm">
+          <img src="/my-covid19-page/img/dados.png" alt="universidade" height="300px" width="80%">
         </div>
-        <div class="col-4 text-success">
-          <h5>Recuperados</h5>
-          <?php echo $total_recovered; ?>
+        <div class="col-sm">
+          <div class="measure-head">Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)<br></div>
+          <p style="text-align: justify; color: white;">"This is the
+            data for the 2019 Novel Coronavirus Visual Dashboard operated by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE). Also,
+            Supported by ESRI Living Atlas
+            Team and the Johns Hopkins University
+            Applied Physics Lab (JHU APL)."</p>
         </div>
-        <div class="col-4 text-danger">
-          <h5>Mortes</h5>
-          <?php echo $total_deaths; ?>
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="table-responsive">
-        <table class="table table-dark">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Países</th>
-              <th scope="col">Confirmados</th>
-              <th scope="col">Recuperados</th>
-              <th scope="col">Mortes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            foreach ($data as $key => $value) {
-              $increase = $value[$days_count]['confirmed'] - $value[$days_count_prev]['confirmed'];
-            ?>
-              <tr>
-                <th scope="row"><?php echo $key ?></th>
-                <td>
-                  <?php echo $value[$days_count]['confirmed']; ?>
-                  <?php if ($increase != 0) { ?>
-                    <small class="text-danger pl-3"><i class="fas fa-arrow-up"></i><?php echo $increase; ?></small>
-                  <?php } ?>
-                </td>
-                <td><?php echo $value[$days_count]['recovered']; ?></td>
-                <td><?php echo $value[$days_count]['deaths']; ?></td>
-              </tr>
-            <?php } ?>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
 
+  <!-- MAPA DO COVID -->
+  <div id="chartdiv"></div>
+
+  <div>
+    <style>
+      .embed-container {
+        position: relative;
+        padding-bottom: 80%;
+        height: 0;
+        max-width: 100%;
+        padding-top: 10%;
+        background-color: #0e0240;
+      }
+
+      .embed-container iframe,
+      .embed-container object,
+      .embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      small {
+        position: absolute;
+        z-index: 40;
+        bottom: 0;
+        margin-bottom: -15px;
+      }
+    </style>
+    <div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="COVID-19" src="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6"></iframe></div>
+  </div>
+
+  <!-- TABELA DO COVID -->
+  <div class="container my-5">
+    <div class="row text-center">
+      <div class="col-4 text-warning">
+        <h5>Confirmados</h5>
+        <?php echo $total_confirmed; ?>
+      </div>
+      <div class="col-4 text-success">
+        <h5>Recuperados</h5>
+        <?php echo $total_recovered; ?>
+      </div>
+      <div class="col-4 text-danger">
+        <h5>Mortes</h5>
+        <?php echo $total_deaths; ?>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div id="scrollable" class="table-responsive">
+      <table class="table table-dark">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Países</th>
+            <th scope="col">Confirmados</th>
+            <th scope="col">Recuperados</th>
+            <th scope="col">Mortes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          foreach ($data as $key => $value) {
+            $increase = $value[$days_count]['confirmed'] - $value[$days_count_prev]['confirmed'];
+          ?>
+            <tr>
+              <th scope="row"><?php echo $key ?></th>
+              <td>
+                <?php echo $value[$days_count]['confirmed']; ?>
+                <?php if ($increase != 0) { ?>
+                  <small class="text-danger pl-3"><i class="fas fa-arrow-up"></i><?php echo $increase; ?></small>
+                <?php } ?>
+              </td>
+              <td><?php echo $value[$days_count]['recovered']; ?></td>
+              <td><?php echo $value[$days_count]['deaths']; ?></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 
 </html>
