@@ -1,0 +1,18 @@
+body {
+  font-family: "Baloo Thambi 2", cursive;
+}
+#home-section {
+  background-color: #0e0240;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  color: #ffffff;
+}
+
+#coronahelp-section {
+  background-color: #0e0240;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 0%;
+  color: #ffffff;
+}
