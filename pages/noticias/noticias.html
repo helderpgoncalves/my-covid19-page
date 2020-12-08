@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="noticias.css" />
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/996973c893.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+
+    <script>
+      /* API - https://pt-news-extractor.herokuapp.com/api/v1/
+
+      var e = new Date();
+      var endDate = e.toLocaleDateString();
+
+      var startDate = new Date();
+
+      //Obter o Dia Anterior
+      startDate.setDate(e.getDate() - 1);
+
+      */
+
+      var url = "https://www.publico.pt/api/list/ultimas?query=coronavirus";
+
+      var xmlhttp = new XMLHttpRequest();
+      var myArr;
+
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          myArr = JSON.parse(this.responseText);
+          enviarNoticias(myArr);
+        }
+      };
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+
+      function enviarNoticias(myArr) {
+        var container = document.getElementById("container");
+        container.innerHTML = "";
+
+        for (var i = 0; i < myArr.length; i++) {
+          var noticia = `<div class="text-center pt-2" id="tituloNoticia">
+            <h3 class="headline pl-10 pr-10">${myArr[i].cleanTitle}</h3>
+            <img class="pt-2" src="${myArr[i].multimediaPrincipal}" alt="alternatetext" width="50%">
+            <div class="descricao pt-2 pb-3">
+            <p>${myArr[i].descricao}</p>
+            <a href="${myArr[i].shareUrl}">${myArr[i].shareUrl}</a> </br>
+            <p>Escrito por: ${myArr[i].autores[0].nome} | ${myArr[i].autores[0].email}</>
+            </div>
+        </div>`;
+
+          $(container).append(noticia);
+        }
+      }
+
+      /*
+      document.getElementById("erro").innerHTML = "";
+
+      var divErro = document.getElementById("erro");
+
+      var erro = `<div class="container{% if pages.current == 'home' %}-fluid{% endif %}">
+        <div class="content row">
+            <div class="col-sm-12">
+                <h1>:(</h1>
+                <p>Aconteceu um problema, mas não se preocupe, volte para a <a href="http://192.168.64.2/my-covid19-page/index.html">Página inicial</a>.</p>
+            </div>
+        </div>
+    </div>`;
+
+      $(divErro).append(erro);
+      */
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/my-covid19-page/index.html">COVID-19 🦠</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" aria-disabled="true"
+              >Mundo 🌎<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="/my-covid19-page/pages/portugal/portugal.php"
+              >Portugal 🇵🇹</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="/my-covid19-page/pages/noticias/noticias.html"
+            >
+              Noticias 📰
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a
+              class="nav-link"
+              href="https://github.com/helderpgoncalves/my-covid19-page"
+              style="text-decoration: none"
+              ><i class="fa fa-github" aria-hidden="true"></i> Github Project</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="erro">
+      <section class="" id="noticias">
+        <h1 class="text-center pt-5">Últimas Notícias</h1>
+        <div class="container" id="container"></div>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+          ScrollReveal().reveal(".container", { delay: 800 });
+        </script>
+      </section>
+    </div>
+
+    <footer class="footer-basic-centered">
+      <p class="footer-company-motto text-white">COVID-19</p>
+
+      <p class="footer-links">
+        <a href="/my-covid19-page/index.html">Home</a>
+        ·
+        <a href="https://github.com/helderpgoncalves/my-covid19-page"
+          >Github Project</a
+        >
+        ·
+        <a href="https://www.linkedin.com/in/heldergoncalves16/">Linkedin</a>
+        ·
+        <a href="https://www.instagram.com/helder_goncalves16/">Instagram</a>
+      </p>
+
+      <p class="footer-company-name text-white">Hélder Gonçalves © 2020</p>
+    </footer>
+  </body>
+</html>

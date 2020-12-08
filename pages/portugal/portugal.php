@@ -2,6 +2,23 @@
 $api_url = "https://covid19-api.vost.pt/Requests/get_last_update";
 $json_data = file_get_contents($api_url);
 $covid19pt = json_decode($json_data);
+
+$api_url_fullDataset = "https://covid19-api.vost.pt/Requests/get_full_dataset";
+$f = file_get_contents($api_url_fullDataset);
+$fullDataSet = json_decode($f);
+
+$dataPoints = array();
+
+foreach ($fullDataSet->data as $item) {
+    $dtime = DateTime::createFromFormat("d/m/Y", $item);
+    $timestamp = strtotime($dtime);
+    $jsTimeStamp = $timestamp * 1000;
+    array_push($dataPoints, array("x" => $item));
+}
+
+foreach ($fullDataSet->confirmados_novos as $item) {
+    array_push($dataPoints, array("y" => $item));
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +45,34 @@ $covid19pt = json_decode($json_data);
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://covid19-api.vost.pt/Requests/get_last_update"></script>
 </head>
+
+<script>
+window.onload = function() {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "dark2", // "light1", "light2", "dark1", "dark2"
+        animationEnabled: true,
+        zoomEnabled: true,
+        title: {
+            text: "Evolução em Portugal"
+        },
+        axisY: {
+            title: "Novos Confirmados",
+            titleFontSize: 24,
+        },
+        data: [{
+            type: "line",
+            dataPoints: <?php echo json_encode($dataPoints); ?>
+        }]
+    });
+    
+    chart.render();
+
+}
+</script>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,9 +90,8 @@ $covid19pt = json_decode($json_data);
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Portugal 🇵🇹<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" href="/my-covid19-page/pages/noticias/noticias.html">
                         Noticias 📰
                     </a>
                 </li>
@@ -64,11 +107,13 @@ $covid19pt = json_decode($json_data);
     <section id="home-section">
         <div class="container">
             <center>
-                <h1 class="text-white">COVID-19 Portugal 🇵🇹<h1>
-                        <h2><a href="https://covid19-api.vost.pt" style="text-decoration:none; color:white">COVID-19
-                                REST API Portugal</a></h2>
-                        <div>
-                            <img src="/my-covid19-page/img/dgs1.png" alt="universidade" height="500px" width="80%">
+                <h1 class="text-white pt-4"><a href="https://covid19-api.vost.pt"
+                        style="text-decoration:none; color:white">COVID-19 Portugal 🇵🇹</a>
+                    <h1>
+                        <div class="pt-4 image-container">
+                            <img id="f1" src="/my-covid19-page/img/dgs1.png" alt="dgs1" height="500px" width="80%"> <br>
+                            <img class="pt-5" id="f2" src="/my-covid19-page/img/dgs2.jpg" alt="dgs2" height="500px"
+                                width="80%">
                         </div>
             </center>
 
@@ -99,10 +144,24 @@ $covid19pt = json_decode($json_data);
     </section>
 
     <div class="container my-5">
-        <h1 class="text-white text-center">Portugal desde o dia 0</h1>
+        <h1 class="text-white text-center">🇵🇹 Desde o dia 0 até
+            <script>
+            document.write(new Date().toLocaleDateString());
+            </script>
+        </h1>
+
+        <div class="alert alert-danger" role="alert">
+            <div class="row text-center">
+                <div class="col-sm">
+                    <h5>Novos Casos Hoje</h5>
+                    <?php echo end($fullDataSet->confirmados_novos); ?>
+                </div>
+            </div>
+        </div>
+
         <div class="row text-center pt-4">
             <div class="col-4 text-primary">
-                <h5>Ativos</h5>
+                <h5>Casos Ativos</h5>
                 <?php echo $covid19pt->ativos; ?>
             </div>
             <div class="col-4 text-warning">
@@ -119,8 +178,119 @@ $covid19pt = json_decode($json_data);
                 <h5>Total de Mortes</h5>
                 <?php echo $covid19pt->obitos; ?>
             </div>
+            <div class="col-4 text-info">
+                <h5>Total de Internados</h5>
+                <?php echo $covid19pt->internados; ?>
+            </div>
+            <div class="col-4 text-light">
+                <h5>Internados UCI</h5>
+                <?php echo $covid19pt->internados_uci; ?>
+            </div>
         </div>
     </div>
+
+    <div class="container">
+        <center>
+            <h1 class="text-white text-center">
+                Informações por Regiões de Saúde
+            </h1>
+            <label class="text-white" for="regiao">Escolha uma região:</label> <br>
+            <select name="select" id="select" class="select-css">
+                <option value="arsnorte">Norte</option>
+                <option value="arscentro">Centro</option>
+                <option value="arsalentejo">Lisboa e Vale do Tejo</option>
+                <option value="arsalgarve">Algarve</option>
+                <option value="acores">Açores</option>
+                <option value="madeira">Madeira</option>
+            </select>
+            <script>
+            var xmlhttp = new XMLHttpRequest();
+            var url = 'https://covid19-api.vost.pt/Requests/get_last_update'
+            var myArr;
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myArr = JSON.parse(this.responseText);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            $("#select").change(function() {
+                document.getElementById("regioes").innerHTML = ""
+                var divContent = document.getElementById("regioes");
+
+                var regiao = $("#select").val().toString();
+                var confirmados = "confirmados_"
+                var obitos = "obitos_";
+
+                var confirmadosRegiao = confirmados.concat(regiao);
+                var obitosRegiao = obitos.concat(regiao);
+
+                var infoRegioes = `<div class="col text-warning">
+                <h5>Total Confirmados</h5>
+                <span>${myArr[confirmadosRegiao]}<span>
+            </div>
+            <div class="col text-danger">
+                <h5>Total de Mortes</h5>
+                <span>${myArr[obitosRegiao]}<span>
+            </div>`;
+
+                $(divContent).append(infoRegioes);
+            });
+            </script>
+        </center>
+        <div id="regioes" class="row text-center pt-4">
+        </div>
+
+        <div id="grafico" class="container pt-4">
+            <h1 class="text-white text-center">
+                Gráfico
+            </h1>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+    </div>
+
+    <div class="pt-5 mx-3 mx-md-5 article-text margin-top-30">
+        <script>
+        if (document.documentElement.clientWidth > "992") {
+            $(".article-text").append(
+                "<div class='embed-responsive embed-responsive-16by9'><iframe width='100%' src='https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html#/acf023da9a0b4f9dbb2332c13f635829'></iframe></div>"
+            );
+        } else {
+            $(".article-text").append(
+                "<div class='embed-responsive embed-responsive-16by9'><iframe width='100%' src='https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html#/e9dd1dea8d1444b985d38e58076d197a'></iframe></div>"
+            );
+        }
+        </script>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="100%"
+                src="https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html#/acf023da9a0b4f9dbb2332c13f635829"></iframe>
+        </div>
+        <i><small class="text-white">Créditos: Dados fornecidos por DGS / Infografia fornecida por Esri
+                Portugal</small></i>
+    </div>
+
+    <footer class="footer-basic-centered">
+
+        <p class="footer-company-motto text-white">COVID-19</p>
+
+        <p class="footer-links">
+            <a href="/my-covid19-page/index.html">Home</a>
+            ·
+            <a href="https://github.com/helderpgoncalves/my-covid19-page">Github Project</a>
+            ·
+            <a href="https://www.linkedin.com/in/heldergoncalves16/">Linkedin</a>
+            ·
+            <a href="https://www.instagram.com/helder_goncalves16/">Instagram</a>
+        </p>
+
+        <p class="footer-company-name text-white">Hélder Gonçalves © 2020</p>
+
+    </footer>
+
 </body>
 
 </html>
