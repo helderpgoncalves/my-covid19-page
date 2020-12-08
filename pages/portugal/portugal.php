@@ -27,7 +27,8 @@ foreach ($fullDataSet->confirmados_novos as $item) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COVID-19 IPVC</title>
+    <title>COVID-19 | Portugal</title>
+    <link rel="icon" type="image/png" href="/my-covid19-page/img/virus.png"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -38,15 +39,15 @@ foreach ($fullDataSet->confirmados_novos as $item) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/996973c893.js" crossorigin="anonymous"></script>
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="https://covid19-api.vost.pt/Requests/get_last_update"></script>
+
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+
 </head>
 
 <script>
@@ -242,6 +243,12 @@ window.onload = function() {
         </center>
         <div id="regioes" class="row text-center pt-4">
         </div>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+          ScrollReveal().reveal(".container", { delay: 800 });
+        </script>
+      </section>
 
         <div id="grafico" class="container pt-4">
             <h1 class="text-white text-center">
