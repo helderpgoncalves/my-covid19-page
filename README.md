@@ -9,9 +9,9 @@
       <a href="#REST-APIs-Utilizadas">REST APIs Utilizadas</a>
     </li>
     <li>
-      <a href="##Site">Site</a>
+      <a href="#Site">Site</a>
       <ul>
-        <li><a href="###Landing-Page-🏠">Home Page</a></li>
+        <li><a href="#Landing-Page-🏠">Home Page</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
