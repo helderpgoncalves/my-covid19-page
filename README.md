@@ -65,6 +65,8 @@ Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> d
 
 ### Notícias 
 ![](https://github.com/helderpgoncalves/my-covid19-page/blob/main/img/noticiaspage.png)
+![](https://github.com/helderpgoncalves/my-covid19-page/blob/main/img/noticias2.png)
+
 
 
 ## Tecnologias/Linguagens/Librarias 
