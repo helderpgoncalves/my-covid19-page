@@ -14,4 +14,5 @@
     $madeira = $covid19pt->confirmados_madeira;
     $recuperados = $covid19pt->recuperados;
     $mortes = $covid19pt->obitos;
+
 ?>

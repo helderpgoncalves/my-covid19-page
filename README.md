@@ -37,7 +37,7 @@
 <table>
 <tr>
 <td>
-Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> desenvolver uma aplicação web capaz de integrar diversas APIs à minha escolha. Como tal para os tempos em que vivemos decidi desenvolver uma aplicação web acerca do Covid-19 utilizando diversas fontes de dados. Esta aplicação é capaz de recolher dados a nível mundial acerca do Covid-19 (novos casos, confirmados, etc) utilizando diversas fontes seguras e confiáveis (acreditadas) e através dos dos mesmos inserindo-os em tabelas ou gráficos. Não só há exploração a nível mundial mas também existe a nível nacional, isto é, existe uma secção somente para dados de Portugal 🇵🇹 onde se pode analisar todos os novos casos, mortes, recuperados, etc. Existe também a possibilidade de realizar consultas a nível regional assim como consultar as últimas notícias do <b>Jornal <a href="https://www.publico.pt">Público</a></b> <b>Jornal <a href="https://www.cmjornal.pt">Correio da Manhã</a></b> acerca deste vírus.
+Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> desenvolver uma aplicação web capaz de integrar diversas APIs à minha escolha. Sendo então que decidi desenvolver uma aplicação web acerca do Covid-19 utilizando diversas fontes de dados. Esta aplicação é capaz de recolher dados a nível mundial acerca do Covid-19 (novos casos, confirmados, etc) utilizando diversas fontes seguras e confiáveis (acreditadas) e atribuindo a estas tabelas ou gráficos. Não só há exploração a nível mundial mas também existe a nível nacional, isto é, existe uma secção somente de dados de Portugal 🇵🇹 onde se pode analisar todos os novos casos, mortes, recuperados, etc. Existe também a possibilidade de realizar consultas a nível regional assim como consultar as últimas notícias publicadas pelo <b>Jornal <a href="https://www.publico.pt">Público</a></b> e o <b>Jornal <a href="https://www.cmjornal.pt">Correio da Manhã</a></b> acerca deste vírus.
 </td>
 </tr>
 </table>
@@ -46,10 +46,11 @@ Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> d
 
 | Link  | Descrição  |
 |:------|:-------------|
-| [COVID-19 REST API Portugal](https://covid19-api.vost.pt) | Repo for deploying a REST API to get updates regarding Portuguese DGS COVID-19. It is a combined effort between DSSG Portugal and VOST Portugal.
-| [Direcção Geral de Saúde](https://www.dgs.pt/) | Ministério da Saúde Português, através do _dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data).
-| [COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19) | This is the data repository for the 2019 Novel Coronavirus Visual Dashboard operated by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE). Also, Supported by ESRI Living Atlas Team and the Johns Hopkins University Applied Physics Lab (JHU APL).
-| [Portuguese News Exctrator API](https://github.com/spamz23/PT-NEWS_EXTRACTOR) | An open-source REST API that extracts news, from portuguese jornals, to JSON.
+| [COVID-19 REST API Portugal](https://covid19-api.vost.pt) | Repositório onde se encontram alojados todos os dados referentes ao COVID-19 em Portugal por parte da Direção Geral de Saúde. Este repositório foi criado num esforço combinado pela DSSG Portugal e a VOST Portugal.
+| [Direcção Geral de Saúde](https://www.dgs.pt/) | Ministério da Saúde Português, através do dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data).
+| [COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19) | Repositório de dados para o Painel Visual do Novel Coronavirus 2019 operado pelo Centro de Ciência e Engenharia de Sistemas da Universidade Johns Hopkins (JHU CSSE). Além disso, com o apoio da equipa do ESRI Living Atlas e do Laboratório de Física Aplicada da Universidade Johns Hopkins (JHU APL).
+| [Portuguese News Exctrator API](https://github.com/spamz23/PT-NEWS_EXTRACTOR) | 
+Uma API REST open-source que extrai notícias de jornais portugueses para JSON.
 
 ## Site
 ### Landing Page 
@@ -78,15 +79,19 @@ Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> d
 - [Bootstrap](http://getbootstrap.com/) - Framework web com código-fonte aberto para desenvolvimento de componentes de interface e front-end para sites e aplicações web usando HTML, CSS e JavaScript, baseado em modelos de design para a tipografia, melhorando a experiência do usuário em um site amigável e responsivo.
 - [XAMPP](https://www.apachefriends.org/index.html) - XAMPP é um pacote com os principais servidores de código aberto do mercado, incluindo FTP, banco de dados MySQL e Apache com suporte as linguagens PHP e Perl.
 - [Postman](https://www.postman.com) - Aplicativo com a função de testar e desenvolver APIs em uma interface bastante simples e intuitiva. Esta nos permite simular requisições HTTP de forma rápida, armazenando-as para que possamos usá-las posteriormente.
+- [amCharts](https://github.com/amcharts/amcharts4) -  Biblioteca JavaScript utilizada para criar diversos tipos de gráficos responsivos e interativos. 
+- [Dataflow Kit](https://dataflowkit.com/) - Extrair dados de páginas web em dados úteis com um kit de ferramentas simples de apontar e clicar. O kit Dataflow é um serviço baseado em nuvem para web scraping e tarefas de extração de dados
+- [Twitter Developer](https://developer.twitter.com/en) - Divulgar e analisar tweets, otimizar anúncios e criar experiências exclusivas para o cliente.
+
 
 ## Dificuldades
 <p>A primeira dificuldade enfrentada no desenvolvimento deste trabalho foi encontrar o tema certo, o que para os dias que vivemos acabou por não se tornar difícil devido a este vírus que todos estamos sujeitos e enfrentamos. 
 Sempre tive uma paixão por análise de dados e aplicá-los em gráficos e tabelas e análise para posteriormente poder analisá-los sendo então este o meu ponto crucial na decisão do tema.
 Uma grande dificuldade foi escolher as APIs a utilizar pois dentro deste ramo existem diversas e com diferentes dados que podemos acessar. Para testar as mesmas usei o <b>Postman</b>, uma ferramenta excelente para testar as requisições e consultar os resultados em formato JSON que recebíamos. 
-A maior dificuldade deste projeto passou pela integração das mesmas, isto é aplicar os diferentes dados recebidos na tela de forma responsiva e criativa para dar ao utilizador além de dados concretos, diários e continuamente atualizados também uma experiência única.<p>
+A maior dificuldade deste projeto passou pela integração das diferentes APIs, isto é, aplicar os diferentes dados recebidos na tela de forma responsiva e criativa para dar ao utilizador além de dados concretos, diários e continuamente atualizados também uma experiência única. O ponto mais trabalhoso foi a passagem de variáveis de data em PHP, transformá-las no tão famoso Unix Timestamp e passar para o Timestamp do Javascript para assim finalmente poder adicioná-las ao nosso gráfico do CanvaJS e verificar toda a evolução do Covid-19 em Portugal desde o seu ínicio.<p>
   
 ## Trabalho Futuro
-<p>Como foco principal e trabalho futuro será hospedar o meu pequeno site no AWS (Amazon Web Services) pois tenho algum conhecimento sobre o mesmo e à partida não seria um trabalho extenso nem trabalhoso. Antes de partir para esta hospedagem pretendo tornar o website totalmente responsivo a mobile assim como criar um design mais amigável. Um trabalho futuro passa por rever código e aplicar as regras de <b>Clean Code</b> que tanto aprecio, pois nos dias que correm qualquer um se torna programador contudo em simultâneo existem muitos poucos àquilo que podemos chamar bons programadores.<p>
+<p>Como foco principal e trabalho futuro será hospedar o meu pequeno site no AWS (Amazon Web Services) visto que já tenho algum conhecimento sobre o mesmo e à partida não seria um trabalho extenso nem trabalhoso. Antes de iniciar para esta hospedagem pretendo tornar o a minha aplicação web totalmente responsive a mobile assim como criar um design mais amigável. Um trabalho futuro passa por rever código e aplicar as regras de <b>Clean Code</b> que tanto aprecio, pois nos dias que correm qualquer consegue se tornar programador contudo em simultâneo existem muitos poucos àquilo que podemos chamar bons programadores.<p>
   
 ## Autor
 

@@ -11,7 +11,7 @@ include 'logic.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19 | MUNDO</title>
-    <link rel="icon" type="image/png" href="/my-covid19-page/img/virus.png"/>
+    <link rel="icon" type="image/png" href="/my-covid19-page/img/virus.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -25,8 +25,7 @@ include 'logic.php';
     <script src="https://kit.fontawesome.com/996973c893.js" crossorigin="anonymous"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
@@ -46,8 +45,7 @@ include 'logic.php';
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/my-covid19-page/index.html">COVID-19 🦠</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -66,8 +64,7 @@ include 'logic.php';
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link" href="https://github.com/helderpgoncalves/my-covid19-page"
-                        style="text-decoration:none;"><i class="fa fa-github" aria-hidden="true"></i> Github Project</a>
+                <li><a class="nav-link" href="https://github.com/helderpgoncalves/my-covid19-page" style="text-decoration:none;"><i class="fa fa-github" aria-hidden="true"></i> Github Project</a>
                 </li>
             </ul>
         </div>
@@ -77,8 +74,7 @@ include 'logic.php';
         <div class="container">
             <center>
                 <h1>De onde foram retirados os dados?<h1>
-                        <h3><a href="https://github.com/CSSEGISandData/COVID-19"
-                                style="text-decoration:none; color:white">CSSEGISandData/COVID-19</a></h3>
+                        <h3><a href="https://github.com/CSSEGISandData/COVID-19" style="text-decoration:none; color:white">CSSEGISandData/COVID-19</a></h3>
             </center>
             <div class="row">
                 <div class="col-sm">
@@ -138,21 +134,20 @@ include 'logic.php';
                 </thead>
                 <tbody>
                     <?php
-          foreach ($data as $key => $value) {
-            $increase = $value[$days_count]['confirmed'] - $value[$days_count_prev]['confirmed'];
-          ?>
-                    <tr>
-                        <th scope="row"><?php echo $key ?></th>
-                        <td>
-                            <?php echo $value[$days_count]['confirmed']; ?>
-                            <?php if ($increase != 0) { ?>
-                            <small class="text-danger pl-3"><i
-                                    class="fas fa-arrow-up"></i><?php echo $increase; ?></small>
-                            <?php } ?>
-                        </td>
-                        <td><?php echo $value[$days_count]['recovered']; ?></td>
-                        <td><?php echo $value[$days_count]['deaths']; ?></td>
-                    </tr>
+                    foreach ($data as $key => $value) {
+                        $increase = $value[$days_count]['confirmed'] - $value[$days_count_prev]['confirmed'];
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $key ?></th>
+                            <td>
+                                <?php echo $value[$days_count]['confirmed']; ?>
+                                <?php if ($increase != 0) { ?>
+                                    <small class="text-danger pl-3"><i class="fas fa-arrow-up"></i><?php echo $increase; ?></small>
+                                <?php } ?>
+                            </td>
+                            <td><?php echo $value[$days_count]['recovered']; ?></td>
+                            <td><?php echo $value[$days_count]['deaths']; ?></td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
