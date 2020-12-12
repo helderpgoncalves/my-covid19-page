@@ -49,8 +49,7 @@ Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> d
 | [COVID-19 REST API Portugal](https://covid19-api.vost.pt) | Repositório onde se encontram alojados todos os dados referentes ao COVID-19 em Portugal por parte da Direção Geral de Saúde. Este repositório foi criado num esforço combinado pela DSSG Portugal e a VOST Portugal.
 | [Direcção Geral de Saúde](https://www.dgs.pt/) | Ministério da Saúde Português, através do dashboard_ do COVID-19 ([aqui](https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/)) e da base de dados da ESRI Portugal [aqui](https://esriportugal.maps.arcgis.com/home/item.html?id=803d4c90bbb04c03999e65e5ce411cf8#data).
 | [COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19) | Repositório de dados para o Painel Visual do Novel Coronavirus 2019 operado pelo Centro de Ciência e Engenharia de Sistemas da Universidade Johns Hopkins (JHU CSSE). Além disso, com o apoio da equipa do ESRI Living Atlas e do Laboratório de Física Aplicada da Universidade Johns Hopkins (JHU APL).
-| [Portuguese News Exctrator API](https://github.com/spamz23/PT-NEWS_EXTRACTOR) | 
-Uma API REST open-source que extrai notícias de jornais portugueses para JSON.
+| [Portuguese News Exctrator API](https://github.com/spamz23/PT-NEWS_EXTRACTOR) | Uma API REST open-source que extrai notícias de jornais portugueses para JSON.
 
 ## Site
 ### Landing Page 
