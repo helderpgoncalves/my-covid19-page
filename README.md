@@ -62,6 +62,7 @@ Foi-me proposto para a disciplina de <b> Sistemas de Informação em Rede </b> d
 ### Portugal  
 ![](https://github.com/helderpgoncalves/my-covid19-page/blob/main/img/portugalpage.png)
 ![](https://github.com/helderpgoncalves/my-covid19-page/blob/main/img/portugalpage2.png)
+![](https://github.com/helderpgoncalves/my-covid19-page/blob/main/img/portugalpage3.png)
 
 ### Notícias 
 ![](https://github.com/helderpgoncalves/my-covid19-page/blob/main/img/noticiaspage.png)
