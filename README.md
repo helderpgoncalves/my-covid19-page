@@ -1,6 +1,6 @@
+<h1 align="center">🦠 MY COVID-19 PAGE 😷</h1> <br>
 <p align="center">
-<img src="https://s2.glbimg.com/WEiC_rzHBH3JeQALYyLVlA_lXrM=/0x0:4000x2250/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/n/v/wOBLo5QQWOP7XduqhM3g/coronavirus-4-.jpg" width="400" height="200">
-<h1 align="center">🦠 MY COVID-19 PAGE 😷</h1>
+<img src="https://s2.glbimg.com/WEiC_rzHBH3JeQALYyLVlA_lXrM=/0x0:4000x2250/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/n/v/wOBLo5QQWOP7XduqhM3g/coronavirus-4-.jpg" width="400" height="200"> <br>
 <img src="https://img.shields.io/github/license/soroushchehresa/awesome-coronavirus">
 </p>
 
